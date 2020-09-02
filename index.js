@@ -24,14 +24,12 @@ io.on("connect", (socket) => {
 
     socket.emit("message", {
       user: "애니겟이다람쥐",
-      text: `${user.name}님, 어서오세요롱이 ${user.room}방 입니다랑어`,
+      text: `${user.name}님, 어서오세요롱이!${user.room}방 입니다랑어`,
     });
-    socket.broadcast
-      .to(user.room)
-      .emit("message", {
-        user: "애니겟이다람쥐",
-        text: `${user.name}님이 들어오셨습니다랑어!`,
-      });
+    socket.broadcast.to(user.room).emit("message", {
+      user: "애니겟이다람쥐",
+      text: `${user.name}님이 들어오셨습니다랑어!`,
+    });
 
     io.to(user.room).emit("roomData", {
       room: user.room,
